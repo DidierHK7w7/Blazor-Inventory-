@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataAccess;
+using Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +10,31 @@ namespace Business
 {
 	public class B_Warehouse
 	{
+		public List<WarehouseEntity> WarehouseList()
+		{
+			using (var db = new InventoryContext())
+			{
+				return db.Warehouses.ToList();
+			}
+		}
+		//crear y guardar info en db
+		public void CreateWarehouse(WarehouseEntity oWarehouse)
+		{
+			using (var db = new InventoryContext())
+			{
+				db.Warehouses.Add(oWarehouse);   //Se agrega el objeto
+				db.SaveChanges();   //Guardar cambios
+			}
+		}
+
+		//actualizar info en db
+		public void UpdateWarehouse(WarehouseEntity oWarehouse)
+		{
+			using (var db = new InventoryContext())
+			{
+				db.Warehouses.Update(oWarehouse);   //Se agrega el objeto
+				db.SaveChanges();   //Guardar cambios
+			}
+		}
 	}
 }
