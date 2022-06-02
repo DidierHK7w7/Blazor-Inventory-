@@ -1,0 +1,32 @@
+﻿<h3>Form001</h3>
+
+@code{
+	[Parameter]	//parametro, se pasa al componente en el index
+	public string Message { get; set; }
+
+	string message;
+	string msg;
+	string messageButton;
+
+	protected override async Task OnInitializedAsync()
+	{
+		message = Message;
+	}
+
+	private void ChangeText()
+	{
+		message = messageButton;
+	}
+}
+
+<div>
+	<input class="form-control" type="text" @bind-value="@messageButton"/>
+	<button type="button" class="btn btn-primary" @onclick="ChangeText">Click here</button>
+	<p>@message</p>
+</div>
+
+<div>
+	<input class="form-control" type="text" @bind="@msg" @bind:event="oninput"/>	<!-- Parecido a la funcion computada de Vue-->
+	<p>@msg</p>
+</div>
+
