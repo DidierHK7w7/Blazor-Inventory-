@@ -9,8 +9,12 @@ namespace Entities
 {
     public class CategoryEntity
     {
-        [Key]  //DataAnotations
+        [Key]  //DataAnotations, key indica llave promaria
+        [StringLength(50)]    //Indicamos el tamanio de CategoriaId
         public string CategoryId { get; set; }
+
+        [Required]
+        [StringLength(100)]
         public string CategoryName { get; set; }
     }
 }
