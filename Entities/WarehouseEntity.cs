@@ -20,5 +20,8 @@ namespace Entities
         [Required]
         [StringLength(100)]
         public string WarehouseAddress { get; set; }
+
+        //Relación con almacenamiento (StorageEntity)
+        public ICollection<StorageEntity> Storages { get; set; }
     }
 }

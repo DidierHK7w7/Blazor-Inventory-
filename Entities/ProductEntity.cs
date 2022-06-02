@@ -11,15 +11,22 @@ namespace Entities
     {
         [Key]
         [StringLength(10)]
-        public string PeoductId { get; set; }
+        public string ProductId { get; set; }
 
         [Required]
         [StringLength(100)]
-        public string PeoductName { get; set; }
+        public string ProductName { get; set; }
 
         [StringLength(600)]
-        public string PeoductDescription { get; set; }
+        public string PuoductDescription { get; set; }
 
         public int TotalQuantity { get; set; }
+
+        //Relacion con categoria
+        public string CategoryId { get; set; }
+        public CategoryEntity Category { get; set; }
+
+        //Relacion con el almacenamiento
+        public ICollection<StorageEntity> Storage { get; set; }
     }
 }
