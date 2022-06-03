@@ -2,13 +2,38 @@
 @using Business
 
 @code {
-	List<ProductEntity> products = new List<ProductEntity>();
+    List<ProductEntity> products = new List<ProductEntity>();
+    List<ProductEntity> tempproducts = new List<ProductEntity>();
+    List<CategoryEntity> categories = new List<CategoryEntity>();
 
-	protected override async Task OnInitializedAsync()
-	{
-		products = B_Product.ProductList();
-	}
+    string message;
+
+    protected override async Task OnInitializedAsync()
+    {
+        products = B_Product.ProductList();
+        tempproducts = products;
+        categories = B_Category.CategoryList();
+    }
+
+    //filtro
+    private void CategoryChanged(ChangeEventArgs e)
+    {
+        //message = e.Value.ToString();
+        tempproducts = products.Where(c => c.CategoryId == e.Value.ToString()).ToList();    //la categoria discrimira el id de la categoria
+    }
 }
+
+<div class="row col-2">
+    <select class="form-select" @onchange="CategoryChanged">
+        <option Selected>Categorias</option>
+        @foreach(var category in categories)
+        {
+            <option class="dropdown-item" value="@category.CategoryId">@category.CategoryName</option>
+        }
+    </select>
+    
+</div>
+
 <table class="table table-hover">
 	<thead>
         <tr>
@@ -22,7 +47,7 @@
     <tbody>
         @{
             int i = 1;
-            foreach(var product in products){
+            foreach(var product in tempproducts){
                 <tr>
                     <th scope="row">@i</th>
                     <td>@product.ProductId</td>
@@ -34,3 +59,4 @@
         }
     </tbody>
 </table>
+@message
