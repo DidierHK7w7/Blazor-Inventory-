@@ -3,6 +3,13 @@
 
 @code {
 	ProductEntity oProduct = new ProductEntity();
+	List<CategoryEntity> categories = new List<CategoryEntity>();
+
+	protected override async Task OnInitializedAsync()
+	{
+		categories = B_Category.CategoryList();
+	}
+
 	private void SaveProduct()
 	{
 		B_Product.CreateProduct(oProduct);
@@ -10,22 +17,35 @@
 }
 
 <div>
-	<EditForm Model="oProduct">
-		<div class="form-control">
-			<label>Referencia:</label>
-			<InputText @bind-Value="oProduct.ProductId" class="form-control"></InputText>
+	<EditForm Model="oProduct" class="row col-4">
+
+		<div class="col-12">
+			<label for="InputPID" class="col-form-label">Referencia:</label>
+			<InputText @bind-Value="oProduct.ProductId" id="InputPID" class="form-control"></InputText>
+	    </div>
+
+		<div class="col-12">
+			<label for="InputPN" class="col-form-label">Nombre:</label>
+			<InputText @bind-Value="oProduct.ProductName" id="InputPN" class="form-control"></InputText>
+	    </div>
+
+		<div class="col-12">
+			<label for="InputPD" class="col-form-label">Descripcion:</label>
+			<InputTextArea @bind-Value="oProduct.PuoductDescription" id="InputPD" class="form-control"></InputTextArea>
+	    </div>
+
+		<div class="col-12">
+			<label for="InputCat" class="col-form-label">Categoria:</label>
+			<InputSelect @bind-Value="oProduct.CategoryId" class="form-select" id="InputCat">
+				@foreach(var category in categories)
+				{
+					<option value="@category.CategoryId">@category.CategoryName</option>
+				}
+			</InputSelect>
 		</div>
 
-		<div class="form-control">
-			<label>Nombre:</label>
-			<InputText @bind-Value="oProduct.ProductName" class="form-control"></InputText>
+		<div class="col-12 mt-3">
+			<button type="button" class="btn btn-success" @onclick="SaveProduct">Agregar producto</button>
 		</div>
-
-		<div class="form-control">
-			<label>Descripcion:</label>
-			<InputTextArea @bind-Value="oProduct.PuoductDescription" class="form-control"></InputTextArea>
-		</div>
-
-		<button type="button" class="btn btn-success" @onclick="SaveProduct">Agregar producto</button>
 	</EditForm>
 </div>
