@@ -1,6 +1,6 @@
 ﻿@using Entities
 @using Business
-
+@inject NavigationManager NavManager
 @code {
 	ProductEntity oProduct = new ProductEntity();
 	List<CategoryEntity> categories = new List<CategoryEntity>();
@@ -13,10 +13,12 @@
 	private void SaveProduct()
 	{
 		B_Product.CreateProduct(oProduct);
+		NavManager.NavigateTo("product/list");	//Nos regresa a la pagina a la hora de crear
 	}
 }
 
 <div>
+	<h1> Crear producto</h1>
 	<EditForm Model="oProduct" class="row col-4">
 
 		<div class="col-12">
@@ -37,6 +39,7 @@
 		<div class="col-12">
 			<label for="InputCat" class="col-form-label">Categoria:</label>
 			<InputSelect @bind-Value="oProduct.CategoryId" class="form-select" id="InputCat">
+				<option selected>Categorias:</option>
 				@foreach(var category in categories)
 				{
 					<option value="@category.CategoryId">@category.CategoryName</option>
