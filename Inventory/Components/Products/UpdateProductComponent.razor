@@ -1,0 +1,52 @@
+﻿@using Entities
+@using Business
+@code {
+	[Parameter]
+	public string IdProduct { get; set; }
+	ProductEntity oProduct = new ProductEntity();
+	List<CategoryEntity> categories = new List<CategoryEntity>();
+
+	protected override async Task OnInitializedAsync()
+	{
+		categories = B_Category.CategoryList();
+		oProduct = B_Product.ProductById(IdProduct);
+	}
+}
+
+<div>
+	<h1>Actualizar producto</h1>
+	<EditForm Model="oProduct" class="row col-4">
+
+		<fieldset disabled>
+			<div class="col-12">
+				<label for="InputPID" class="col-form-label">Referencia:</label>
+				<InputText @bind-Value="oProduct.ProductId" id="InputPID" class="form-control"></InputText>
+			</div>
+		</fieldset>
+
+		<div class="col-12">
+			<label for="InputPN" class="col-form-label">Nombre:</label>
+			<InputText @bind-Value="oProduct.ProductName" id="InputPN" class="form-control"></InputText>
+		</div>
+
+		<div class="col-12">
+			<label for="InputPD" class="col-form-label">Descripcion:</label>
+			<InputTextArea @bind-Value="oProduct.PuoductDescription" id="InputPD" class="form-control"></InputTextArea>
+		</div>
+
+		<div class="col-12">
+			<label for="InputCat" class="col-form-label">Categoria:</label>
+			<InputSelect @bind-Value="oProduct.CategoryId" class="form-select" id="InputCat">
+				<option selected>Categorias:</option>
+				@foreach (var category in categories)
+				{
+					<option value="@category.CategoryId">@category.CategoryName</option>
+				}
+			</InputSelect>
+		</div>
+
+		<div class="col-12 mt-3">
+			<button type="button" class="btn btn-success" @onclick="SaveProduct">Agregar producto</button>
+		</div>
+	</EditForm>
+</div>
