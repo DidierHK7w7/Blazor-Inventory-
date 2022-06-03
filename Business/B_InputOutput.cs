@@ -10,7 +10,7 @@ namespace Business
 {
 	public class B_InputOutput
 	{
-		public List<InputOutputEntity> OutputList()
+		public static List<InputOutputEntity> OutputList()
 		{
 			using (var db = new InventoryContext())
 			{
@@ -18,7 +18,7 @@ namespace Business
 			}
 		}
 		//crear y guardar info en db
-		public void CreateOutput(InputOutputEntity oOutput)
+		public static void CreateOutput(InputOutputEntity oOutput)
 		{
 			using (var db = new InventoryContext())
 			{
@@ -28,7 +28,7 @@ namespace Business
 		}
 
 		//actualizar info en db
-		public void UpdateOutput(InputOutputEntity oOutput)
+		public static void UpdateOutput(InputOutputEntity oOutput)
 		{
 			using (var db = new InventoryContext())
 			{

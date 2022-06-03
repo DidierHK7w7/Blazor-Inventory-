@@ -10,7 +10,7 @@ namespace Business
 {
 	public class B_Warehouse
 	{
-		public List<WarehouseEntity> WarehouseList()
+		public static List<WarehouseEntity> WarehouseList()
 		{
 			using (var db = new InventoryContext())
 			{
@@ -18,7 +18,7 @@ namespace Business
 			}
 		}
 		//crear y guardar info en db
-		public void CreateWarehouse(WarehouseEntity oWarehouse)
+		public static void CreateWarehouse(WarehouseEntity oWarehouse)
 		{
 			using (var db = new InventoryContext())
 			{
@@ -28,7 +28,7 @@ namespace Business
 		}
 
 		//actualizar info en db
-		public void UpdateWarehouse(WarehouseEntity oWarehouse)
+		public static void UpdateWarehouse(WarehouseEntity oWarehouse)
 		{
 			using (var db = new InventoryContext())
 			{

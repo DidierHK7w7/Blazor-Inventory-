@@ -10,7 +10,7 @@ namespace Business
 {
 	public class B_Storage
 	{
-		public List<StorageEntity> StorageList()
+		public static List<StorageEntity> StorageList()
 		{
 			using (var db = new InventoryContext())
 			{
@@ -18,7 +18,7 @@ namespace Business
 			}
 		}
 		//crear y guardar info en db
-		public void CreateStorage(StorageEntity oStorage)
+		public static void CreateStorage(StorageEntity oStorage)
 		{
 			using (var db = new InventoryContext())
 			{
@@ -28,7 +28,7 @@ namespace Business
 		}
 
 		//actualizar info en db
-		public void UpdateStorage(StorageEntity oStorage)
+		public static void UpdateStorage(StorageEntity oStorage)
 		{
 			using (var db = new InventoryContext())
 			{

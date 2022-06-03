@@ -1,0 +1,31 @@
+﻿@using Entities
+@using Business
+
+@code {
+	ProductEntity oProduct = new ProductEntity();
+	private void SaveProduct()
+	{
+		B_Product.CreateProduct(oProduct);
+	}
+}
+
+<div>
+	<EditForm Model="oProduct">
+		<div class="form-control">
+			<label>Referencia:</label>
+			<InputText @bind-Value="oProduct.ProductId" class="form-control"></InputText>
+		</div>
+
+		<div class="form-control">
+			<label>Nombre:</label>
+			<InputText @bind-Value="oProduct.ProductName" class="form-control"></InputText>
+		</div>
+
+		<div class="form-control">
+			<label>Descripcion:</label>
+			<InputTextArea @bind-Value="oProduct.PuoductDescription" class="form-control"></InputTextArea>
+		</div>
+
+		<button type="button" class="btn btn-success" @onclick="SaveProduct">Agregar producto</button>
+	</EditForm>
+</div>

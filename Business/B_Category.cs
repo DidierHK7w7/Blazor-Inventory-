@@ -10,7 +10,7 @@ namespace Business
 {
 	public class B_Category
 	{
-		public List<CategoryEntity> CategoryList()
+		public static List<CategoryEntity> CategoryList()
 		{
 			using (var db = new InventoryContext())
 			{
@@ -18,7 +18,7 @@ namespace Business
 			}
 		}
 		//crear y guardar info en db
-		public void CreateCategory(CategoryEntity oCategory)
+		public static void CreateCategory(CategoryEntity oCategory)
 		{
 			using (var db = new InventoryContext())
 			{
@@ -28,7 +28,7 @@ namespace Business
 		}
 
 		//actualizar info en db
-		public void UpdateCategory(CategoryEntity oCategory)
+		public static void UpdateCategory(CategoryEntity oCategory)
 		{
 			using (var db = new InventoryContext())
 			{
