@@ -1,8 +1,10 @@
 ﻿@using Entities
 @using Business
+@inject NavigationManager NavManager
 @code {
 	[Parameter]
 	public string IdProduct { get; set; }
+
 	ProductEntity oProduct = new ProductEntity();
 	List<CategoryEntity> categories = new List<CategoryEntity>();
 
@@ -10,6 +12,12 @@
 	{
 		categories = B_Category.CategoryList();
 		oProduct = B_Product.ProductById(IdProduct);
+	}
+
+	private void UpdateProduct()
+	{
+		B_Product.UpdateProduct(oProduct);
+		NavManager.NavigateTo("product/list");
 	}
 }
 
@@ -46,7 +54,7 @@
 		</div>
 
 		<div class="col-12 mt-3">
-			<button type="button" class="btn btn-success" @onclick="SaveProduct">Agregar producto</button>
+			<button type="button" class="btn btn-success" @onclick="UpdateProduct">Actualizar producto</button>
 		</div>
 	</EditForm>
 </div>
