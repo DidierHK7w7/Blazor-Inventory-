@@ -1,0 +1,47 @@
+﻿@using Entities
+@using Business
+@code {
+    List<CategoryEntity> categories = new List<CategoryEntity>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        categories = B_Category.CategoryList();
+    }
+}
+
+
+<h1 class="text-center"> Lista de productos</h1>
+
+<p>Categorias registradas: @categories.Count</p>
+
+<div class="row">
+    <div class="col-2">
+	    <a href="category/create" type="button" class="btn btn-primary">Crear categoria</a>
+    </div>
+</div>
+
+<table class="table table-hover">
+	<thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Referencia</th>
+          <th scope="col">Categoria</th>
+          <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @{
+            int i = 1;
+            foreach(var category in categories){
+                <tr>
+                    <th scope="row">@i</th>
+                    <td>@category.CategoryId</td>
+                    <td>@category.CategoryName</td>
+                    <td><a class="btn btn-outline-primary btn-sm" href="" role="button">Editar</a></td>
+                </tr>
+                i++;
+            }
+        }
+    </tbody>
+</table>
