@@ -21,6 +21,14 @@
         //message = e.Value.ToString();
         tempproducts = products.Where(c => c.CategoryId == e.Value.ToString()).ToList();    //la categoria discrimira el id de la categoria
     }
+    
+    //eliminar
+    private void DeleteProduct(ProductEntity product)
+    {
+        B_Product.DeleteProduct(product);
+        products = B_Product.ProductList();
+        tempproducts = products;
+    }
 }
 
 <h1 class="text-center"> Lista de productos</h1>
@@ -61,7 +69,10 @@
                     <td>@product.ProductId</td>
                     <td>@product.ProductName</td>
                     <td>@product.CategoryId</td>
-                    <td><a class="btn btn-outline-primary btn-sm" href="product/update/@product.ProductId" role="button">Editar</a></td>
+                    <td>
+                        <a class="btn btn-outline-primary btn-sm" href="product/update/@product.ProductId" role="button">Editar</a>
+                        <a class="btn btn-outline-danger btn-sm" @onclick="(() => DeleteProduct(product))" role="button">Eliminar</a>
+                    </td>
                 </tr>
                 i++;
             }

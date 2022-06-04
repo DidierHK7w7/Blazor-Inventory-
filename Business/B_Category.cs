@@ -17,6 +17,15 @@ namespace Business
 				return db.Categories.ToList();
 			}
 		}
+		//Actualizar por id
+		public static CategoryEntity CategoryById(string id)
+		{
+			using (var db = new InventoryContext())
+			{
+				return db.Categories.ToList().LastOrDefault(p => p.CategoryId == id);
+			}
+		}
+
 		//crear y guardar info en db
 		public static void CreateCategory(CategoryEntity oCategory)
 		{
