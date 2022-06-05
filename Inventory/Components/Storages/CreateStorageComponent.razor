@@ -1,0 +1,53 @@
+﻿@using Entities
+@using Business
+
+@code {
+	StorageEntity oStorage = new StorageEntity();
+	List<WarehouseEntity> warehouses = new List<WarehouseEntity>();
+	List<ProductEntity> products = new List<ProductEntity>();
+
+	protected override async Task OnInitializedAsync()
+	{
+		warehouses = B_Warehouse.WarehouseList();
+		products = B_Product.ProductList();
+	}
+
+	private void SaveStorage()
+	{
+		oStorage.LastUpdate = DateTime.Today;
+		oStorage.StorageId = Guid.NewGuid().ToString();
+		B_Storage.CreateStorage(oStorage);
+	}
+}
+
+<div>
+	<h1> Crear producto</h1>
+	<EditForm Model="oStorage" class="row col-4">
+
+		<div class="col-12">
+			<label for="InputWrhs" class="col-form-label">Bodega:</label>
+			<InputSelect @bind-Value="oStorage.WarehouseId" class="form-select" id="InputWrhs" required>
+				<option selected>Bodegas:</option>
+				@foreach(var warehouse in warehouses)
+				{
+					<option value="@warehouse.WarehouseId">@warehouse.WarehouseName</option>
+				}
+			</InputSelect>
+		</div>
+
+		<div class="col-12">
+			<label for="InputPrdct" class="col-form-label">Productos:</label>
+			<InputSelect @bind-Value="oStorage.ProductId" class="form-select" id="InputPrdct" required>
+				<option selected>Productos:</option>
+				@foreach(var product in products)
+				{
+					<option value="@product.ProductId">@product.ProductName</option>
+				}
+			</InputSelect>
+		</div>
+
+		<div class="col-12 mt-3">
+			<button type="button" class="btn btn-success" @onclick="SaveStorage">Agregar producto</button>
+		</div>
+	</EditForm>
+</div>

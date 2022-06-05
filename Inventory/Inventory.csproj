@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <Folder Include="Components\InOuts\" />
-    <Folder Include="Components\Storage\" />
   </ItemGroup>
 
 </Project>
