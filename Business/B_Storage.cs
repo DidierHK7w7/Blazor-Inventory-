@@ -26,6 +26,16 @@ namespace Business
 				db.SaveChanges();   //Guardar cambios
 			}
 		}
+		
+		//Encuentra si un producto existe en el almacenamiento
+		public static bool IsProductInWarehouse(string idStorage)
+        {
+			using (var db = new InventoryContext())
+            {
+				var product = db.Storages.ToList().Where(p => p.StorageId == idStorage);
+				return product.Any();	//Any, si existe un producto que cumpla con la consulta, retorna dato bool
+            }
+        }
 
 		//actualizar info en db
 		public static void UpdateStorage(StorageEntity oStorage)

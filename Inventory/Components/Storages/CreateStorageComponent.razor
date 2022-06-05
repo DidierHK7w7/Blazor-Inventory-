@@ -6,6 +6,8 @@
 	List<WarehouseEntity> warehouses = new List<WarehouseEntity>();
 	List<ProductEntity> products = new List<ProductEntity>();
 
+	string msg;
+
 	protected override async Task OnInitializedAsync()
 	{
 		warehouses = B_Warehouse.WarehouseList();
@@ -14,14 +16,23 @@
 
 	private void SaveStorage()
 	{
-		oStorage.LastUpdate = DateTime.Today;
-		oStorage.StorageId = Guid.NewGuid().ToString();
-		B_Storage.CreateStorage(oStorage);
+		oStorage.StorageId = $"{oStorage.WarehouseId}-{oStorage.ProductId}";	//Concatena el id de bodega con producto
+
+		if (!B_Storage.IsProductInWarehouse(oStorage.StorageId))		//Si existe un producto asociado no permitira guardar
+		{
+			oStorage.LastUpdate = DateTime.Today;
+			B_Storage.CreateStorage(oStorage);
+			msg = "Producto registrado con exito";
+		}
+		else
+		{
+			msg = "El producto ya esta registrado";
+		}
 	}
 }
 
 <div>
-	<h1> Crear producto</h1>
+	<h1> Crear Almacenamiento</h1>
 	<EditForm Model="oStorage" class="row col-4">
 
 		<div class="col-12">
@@ -50,4 +61,5 @@
 			<button type="button" class="btn btn-success" @onclick="SaveStorage">Agregar producto</button>
 		</div>
 	</EditForm>
+	<p class="">@msg</p>
 </div>
