@@ -45,5 +45,15 @@ namespace Business
 				db.SaveChanges();   //Guardar cambios
 			}
 		}
+
+		//eliminar
+		public static void DeleteCategory(CategoryEntity oCategory)
+		{
+			using (var db = new InventoryContext())
+			{
+				db.Categories.Remove(oCategory);   //Se agrega el objeto
+				db.SaveChanges();   //Guardar cambios
+			}
+		}
 	}
 }

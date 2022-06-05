@@ -2,10 +2,20 @@
 @using Business
 @code {
     List<CategoryEntity> categories = new List<CategoryEntity>();
+    List<CategoryEntity> tempcategories = new List<CategoryEntity>();
 
     protected override async Task OnInitializedAsync()
     {
         categories = B_Category.CategoryList();
+        tempcategories = categories;
+    }
+
+    //eliminar
+    private void DeleteCategory(CategoryEntity category)
+    {
+        B_Category.DeleteCategory(category);
+        categories = B_Category.CategoryList();
+        tempcategories = categories;
     }
 }
 
@@ -38,7 +48,10 @@
                     <th scope="row">@i</th>
                     <td>@category.CategoryId</td>
                     <td>@category.CategoryName</td>
-                    <td><a class="btn btn-outline-primary btn-sm" href="category/update/@category.CategoryId" role="button">Editar</a></td>
+                    <td>
+                        <a class="btn btn-outline-primary btn-sm" href="category/update/@category.CategoryId" role="button">Editar</a>
+                        <a class="btn btn-outline-danger btn-sm" @onclick="(() => DeleteCategory(category))" role="button">Eliminar</a>
+                    </td>
                 </tr>
                 i++;
             }

@@ -23,22 +23,22 @@
 
 		<div class="col-12">
 			<label for="InputPID" class="col-form-label">Referencia:</label>
-			<InputText @bind-Value="oProduct.ProductId" id="InputPID" class="form-control"></InputText>
+			<InputText @bind-Value="oProduct.ProductId" id="InputPID" class="form-control" required></InputText>
 	    </div>
 
 		<div class="col-12">
 			<label for="InputPN" class="col-form-label">Nombre:</label>
-			<InputText @bind-Value="oProduct.ProductName" id="InputPN" class="form-control"></InputText>
+			<InputText @bind-Value="oProduct.ProductName" id="InputPN" class="form-control" required></InputText>
 	    </div>
 
 		<div class="col-12">
 			<label for="InputPD" class="col-form-label">Descripcion:</label>
-			<InputTextArea @bind-Value="oProduct.PuoductDescription" id="InputPD" class="form-control"></InputTextArea>
+			<InputTextArea @bind-Value="oProduct.PuoductDescription" id="InputPD" class="form-control" required></InputTextArea>
 	    </div>
 
 		<div class="col-12">
 			<label for="InputCat" class="col-form-label">Categoria:</label>
-			<InputSelect @bind-Value="oProduct.CategoryId" class="form-select" id="InputCat">
+			<InputSelect @bind-Value="oProduct.CategoryId" class="form-select" id="InputCat" required>
 				<option selected>Categorias:</option>
 				@foreach(var category in categories)
 				{

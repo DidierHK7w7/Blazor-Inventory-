@@ -51,6 +51,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQcm9kdWN0c1xVcGRhdGVQcm9kdWN0Q29tcG9uZW50LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/didie/BOT/Módulo 4. ASP.NET/Unidad 6. Curso de Desarrollo Web con Blazor y .Net/Inventory/Inventory/Components/Warehouse/ListWarehouseComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xXYXJlaG91c2VcTGlzdFdhcmVob3VzZUNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/didie/BOT/Módulo 4. ASP.NET/Unidad 6. Curso de Desarrollo Web con Blazor y .Net/Inventory/Inventory/Pages/Categories/CreateCategoryPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcmllc1xDcmVhdGVDYXRlZ29yeVBhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -85,6 +89,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/didie/BOT/Módulo 4. ASP.NET/Unidad 6. Curso de Desarrollo Web con Blazor y .Net/Inventory/Inventory/Pages/Products/UpdateProductPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdHNcVXBkYXRlUHJvZHVjdFBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/didie/BOT/Módulo 4. ASP.NET/Unidad 6. Curso de Desarrollo Web con Blazor y .Net/Inventory/Inventory/Pages/Warehouses/ListWarehousePage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2FyZWhvdXNlc1xMaXN0V2FyZWhvdXNlUGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/didie/BOT/Módulo 4. ASP.NET/Unidad 6. Curso de Desarrollo Web con Blazor y .Net/Inventory/Inventory/Shared/SurveyPrompt.razor]
