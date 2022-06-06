@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Business
 {
@@ -32,10 +33,21 @@ namespace Business
         {
 			using (var db = new InventoryContext())
             {
-				var product = db.Storages.ToList().Where(p => p.StorageId == idStorage);
+				var product = db.Storages.ToList().Where(s => s.StorageId == idStorage);
 				return product.Any();	//Any, si existe un producto que cumpla con la consulta, retorna dato bool
             }
         }
+
+		public static List<StorageEntity> StorageProductsByWarehouse(string idWarehouse)
+		{
+			using (var db = new InventoryContext())
+			{
+				return db.Storages.Include(s => s.Product)
+								  .Include(s => s.Warehouse)
+								  .Where(s => s.WarehouseId == idWarehouse)
+								  .ToList();
+			}
+		}
 
 		//actualizar info en db
 		public static void UpdateStorage(StorageEntity oStorage)

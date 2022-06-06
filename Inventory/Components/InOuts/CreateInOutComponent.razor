@@ -6,6 +6,8 @@
 	List<WarehouseEntity> warehouses = new List<WarehouseEntity>();
 	List<StorageEntity> storages = new List<StorageEntity>();
 
+	string buttonValue => oInOut.IsInput ? "Registrar entrada" : "Registrar salida";
+
 	protected override async Task OnInitializedAsync()
 	{
 		warehouses = B_Warehouse.WarehouseList();
@@ -14,6 +16,12 @@
 	private void OnChangedWarehouse(ChangeEventArgs e)
 	{
 		var idWarehouse = e.Value.ToString();
+		storages = B_Storage.StorageProductsByWarehouse(idWarehouse);
+	}
+
+	private void SaveInOut()
+	{
+		//storages = B_Storage.CreateStorage();
 	}
 }
 
@@ -26,4 +34,38 @@
 			<option value="@warehouse.WarehouseId">@warehouse.WarehouseName</option>
 		}
 	</select>
+</div>
+
+<div>
+	<h1> Crear Almacenamiento</h1>
+	<EditForm Model="oInOut" class="row col-4">
+
+		<div class="col-12">
+			<label for="InputPrdct" class="col-form-label">Seleccione una producto</label>
+			<InputSelect @bind-Value="oInOut.StorageId" class="form-select" id="InputPrdct" @onchange="OnChangedWarehouse" required>
+				<option selected>Productos:</option>
+				@foreach(var storage in storages)
+				{
+					<option value="@storage.StorageId">@storage.Product.ProductName</option>
+				}
+			</InputSelect>
+		</div>
+
+		<div class="col-12">
+			<label for="InputQnty" class="col-form-label">Cantidad:</label>
+			<InputNumber @bind-Value="oInOut.Quantity" id="InputQnty" class="form-control" required></InputNumber>
+	    </div>
+
+		<div class="col-12">
+			<div class="form-check form-switch">
+				<label for="InputInptE" class="form-check-label">Producto de entrada</label>
+				<InputCheckbox @bind-Value="oInOut.IsInput" id="InputInptE" class="form-check-input" role="switch" type="checkbox"></InputCheckbox>
+			</div>
+		</div>
+
+		<div class="col-12 mt-3">
+			<button type="button" class="btn btn-success" @onclick="SaveInOut">@buttonValue</button>
+		</div>
+
+	</EditForm>
 </div>
