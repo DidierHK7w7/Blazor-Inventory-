@@ -1,5 +1,6 @@
 ﻿@using Entities
 @using Business
+
 @inject NavigationManager NavManager
 @code {
 	ProductEntity oProduct = new ProductEntity();
@@ -15,6 +16,7 @@
 		B_Product.CreateProduct(oProduct);
 		NavManager.NavigateTo("product/list");	//Nos regresa a la pagina a la hora de crear
 	}
+
 }
 
 <div>
@@ -23,17 +25,17 @@
 
 		<div class="col-12">
 			<label for="InputPID" class="col-form-label">Referencia:</label>
-			<InputText @bind-Value="oProduct.ProductId" id="InputPID" class="form-control" required></InputText>
+			<InputText @bind-Value="oProduct.ProductId" id="InputPID" class="form-control" required minlength="3" maxlength="15"></InputText>
 	    </div>
 
 		<div class="col-12">
 			<label for="InputPN" class="col-form-label">Nombre:</label>
-			<InputText @bind-Value="oProduct.ProductName" id="InputPN" class="form-control" required></InputText>
+			<InputText @bind-Value="oProduct.ProductName" id="InputPN" class="form-control" required minlength="3" maxlength="100"></InputText>
 	    </div>
 
 		<div class="col-12">
 			<label for="InputPD" class="col-form-label">Descripcion:</label>
-			<InputTextArea @bind-Value="oProduct.PuoductDescription" id="InputPD" class="form-control" required></InputTextArea>
+			<InputTextArea @bind-Value="oProduct.PuoductDescription" id="InputPD" class="form-control" required minlength="3" maxlength="600"></InputTextArea>
 	    </div>
 
 		<div class="col-12">

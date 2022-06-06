@@ -6,6 +6,11 @@
 	List<WarehouseEntity> warehouses = new List<WarehouseEntity>();
 	List<StorageEntity> storages = new List<StorageEntity>();
 
+	ProductEntity oProduct = new ProductEntity();
+	StorageEntity oStorage = new StorageEntity();
+
+	string msg;
+
 	string buttonValue => oInOut.IsInput ? "Registrar entrada" : "Registrar salida";
 
 	protected override async Task OnInitializedAsync()
@@ -21,7 +26,45 @@
 
 	private void SaveInOut()
 	{
-		//storages = B_Storage.CreateStorage();
+		oStorage = storages.LastOrDefault(s => s.StorageId == oInOut.StorageId);
+		oProduct = oStorage.Product;
+
+		if (oInOut.IsInput)
+		{
+			oStorage.PartialQuantity = oStorage.PartialQuantity + oInOut.Quantity;
+			B_Storage.UpdateStorage(oStorage);
+
+			oProduct.TotalQuantity = oProduct.TotalQuantity + oInOut.Quantity;
+			B_Product.UpdateProduct(oProduct);
+
+			msg = $"El producto {oProduct.ProductName} ha sido actualizado";
+		}
+		else
+		{
+			if (IsBiggerThanZero(oInOut.Quantity, oStorage.PartialQuantity))
+			{
+				oStorage.PartialQuantity = oStorage.PartialQuantity - oInOut.Quantity;
+				B_Storage.UpdateStorage(oStorage);
+
+				oProduct.TotalQuantity = oProduct.TotalQuantity - oInOut.Quantity;
+				B_Product.UpdateProduct(oProduct);
+
+				msg = $"El producto {oProduct.ProductName} ha sido actualizado";
+			}
+			else
+			{
+				msg = $"No existe la cantidad suficiente en bodega para el producto {oProduct.ProductName}";
+			}
+		}
+	}
+
+	private bool IsBiggerThanZero(int quantity, int storageQuantity)
+	{
+		if (storageQuantity > quantity)
+		{
+			return true;
+		}
+		return false;
 	}
 }
 
@@ -37,7 +80,7 @@
 </div>
 
 <div>
-	<h1> Crear Almacenamiento</h1>
+	<h1>Registrar entradas y salidas</h1>
 	<EditForm Model="oInOut" class="row col-4">
 
 		<div class="col-12">
@@ -69,3 +112,6 @@
 
 	</EditForm>
 </div>
+<p>
+	@msg
+</p>

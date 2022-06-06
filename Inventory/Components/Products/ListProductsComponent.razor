@@ -44,7 +44,7 @@
         </select>
     </div>
 
-    <div class="col-2 offset-8">
+    <div class="col-2 offset-7">
 	    <a href="product/create" type="button" class="btn btn-primary">Crear producto</a>
     </div>
 </div>
@@ -56,6 +56,7 @@
           <th scope="col">Referencia</th>
           <th scope="col">Nombre</th>
           <th scope="col">Categoria</th>
+          <th scope="col">Cantidad en bodega</th>
           <th scope="col">Acciones</th>
         </tr>
     </thead>
@@ -69,6 +70,7 @@
                     <td>@product.ProductId</td>
                     <td>@product.ProductName</td>
                     <td>@product.CategoryId</td>
+                    <td>@product.TotalQuantity</td>
                     <td>
                         <a class="btn btn-outline-primary btn-sm" href="product/update/@product.ProductId" role="button">Editar</a>
                         <a class="btn btn-outline-danger btn-sm" @onclick="(() => DeleteProduct(product))" role="button">Eliminar</a>
