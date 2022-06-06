@@ -1,10 +1,12 @@
 ﻿using Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Graph;
 
 namespace DataAccess
 {
@@ -20,7 +22,7 @@ namespace DataAccess
         {
             if (!options.IsConfigured)
             {
-                options.UseSqlServer(@"Data Source=DESKTOP-IGNH3JV\BOCCHI;Initial Catalog=Inventory;Integrated Security=True");    //StringConection
+                options.UseSqlServer(@"Data Source=DESKTOP-IGNH3JV\BOCCHI;Initial Catalog=Inventory;Integrated Security=True");
             }
         }
 

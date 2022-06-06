@@ -64,3 +64,10 @@ C:\Users\didie\BOT\Módulo 4. ASP.NET\Unidad 6. Curso de Desarrollo Web con Blaz
 C:\Users\didie\BOT\Módulo 4. ASP.NET\Unidad 6. Curso de Desarrollo Web con Blazor y .Net\Inventory\Inventory\bin\Debug\net6.0\Entities.pdb
 C:\Users\didie\BOT\Módulo 4. ASP.NET\Unidad 6. Curso de Desarrollo Web con Blazor y .Net\Inventory\Inventory\bin\Debug\net6.0\DataAccess.pdb
 C:\Users\didie\BOT\Módulo 4. ASP.NET\Unidad 6. Curso de Desarrollo Web con Blazor y .Net\Inventory\Inventory\obj\Debug\net6.0\Inventory.csproj.CopyComplete
+C:\Users\didie\BOT\Módulo 4. ASP.NET\Unidad 6. Curso de Desarrollo Web con Blazor y .Net\Inventory\Inventory\bin\Debug\net6.0\Azure.Core.dll
+C:\Users\didie\BOT\Módulo 4. ASP.NET\Unidad 6. Curso de Desarrollo Web con Blazor y .Net\Inventory\Inventory\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\didie\BOT\Módulo 4. ASP.NET\Unidad 6. Curso de Desarrollo Web con Blazor y .Net\Inventory\Inventory\bin\Debug\net6.0\Microsoft.Extensions.Configuration.dll
+C:\Users\didie\BOT\Módulo 4. ASP.NET\Unidad 6. Curso de Desarrollo Web con Blazor y .Net\Inventory\Inventory\bin\Debug\net6.0\Microsoft.Graph.dll
+C:\Users\didie\BOT\Módulo 4. ASP.NET\Unidad 6. Curso de Desarrollo Web con Blazor y .Net\Inventory\Inventory\bin\Debug\net6.0\Microsoft.Graph.Core.dll
+C:\Users\didie\BOT\Módulo 4. ASP.NET\Unidad 6. Curso de Desarrollo Web con Blazor y .Net\Inventory\Inventory\bin\Debug\net6.0\System.Memory.Data.dll
+C:\Users\didie\BOT\Módulo 4. ASP.NET\Unidad 6. Curso de Desarrollo Web con Blazor y .Net\Inventory\Inventory\bin\Debug\net6.0\System.Text.Json.dll
