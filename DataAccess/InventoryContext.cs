@@ -22,7 +22,7 @@ namespace DataAccess
         {
             if (!options.IsConfigured)
             {
-                options.UseSqlServer(@"Data Source=DESKTOP-IGNH3JV\BOCCHI;Initial Catalog=Inventory;Integrated Security=True");
+                options.UseSqlServer("Data Source=sql8002.site4now.net;Initial Catalog=db_a880a5_inventoryblazor;User ID=db_a880a5_inventoryblazor_admin;Password=InventoryBlazor1");
             }
         }
 
